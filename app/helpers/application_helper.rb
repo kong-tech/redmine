@@ -1217,6 +1217,7 @@ module ApplicationHelper
       else
         source
       end
+      source = "/redmine/stylesheets/#{source}"
     end
     super *sources, options
   end
@@ -1232,6 +1233,7 @@ module ApplicationHelper
     elsif current_theme && current_theme.images.include?(source)
       source = current_theme.image_path(source)
     end
+    source = "/redmine/images/#{source}"
     super source, options
   end
 
@@ -1250,6 +1252,9 @@ module ApplicationHelper
           source
         end
       end
+    end
+    sources = sources.map do |source|
+      source = "/redmine/javascripts/#{source}"
     end
     super *sources, options
   end
